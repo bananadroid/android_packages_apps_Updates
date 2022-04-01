@@ -45,6 +45,7 @@ import com.bananadroid.ota.controller.UpdaterController;
 import com.bananadroid.ota.misc.Constants;
 import com.bananadroid.ota.misc.StringGenerator;
 import com.bananadroid.ota.misc.Utils;
+import com.bananadroid.ota.model.Update;
 import com.bananadroid.ota.model.UpdateInfo;
 import com.bananadroid.ota.model.UpdateStatus;
 
@@ -376,7 +377,8 @@ public class UpdatesListAdapter extends RecyclerView.Adapter<UpdatesListAdapter.
 
         deleteAction.setVisible(canDelete);
         exportAction.setVisible(
-                Utils.getPersistentStatus(mContext) == UpdateStatus.Persistent.VERIFIED);
+                Utils.getPersistentStatus(mContext) == UpdateStatus.Persistent.VERIFIED &&
+                !mUpdate.getDownloadId().equals(Update.LOCAL_ID));
 
         popupMenu.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {

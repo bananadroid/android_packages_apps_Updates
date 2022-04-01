@@ -58,8 +58,10 @@ import com.bananadroid.ota.controller.ABUpdateInstaller;
 import com.bananadroid.ota.controller.UpdaterController;
 import com.bananadroid.ota.controller.UpdaterService;
 import com.bananadroid.ota.download.DownloadClient;
+import com.bananadroid.ota.ExtrasFragment.UpdateListener;
 import com.bananadroid.ota.misc.Constants;
 import com.bananadroid.ota.misc.Utils;
+import com.bananadroid.ota.model.Update;
 import com.bananadroid.ota.model.UpdateInfo;
 import com.bananadroid.ota.model.UpdateStatus;
 
@@ -67,7 +69,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-public class UpdatesActivity extends UpdatesListActivity {
+public class UpdatesActivity extends UpdatesListActivity implements UpdateListener {
 
     private static final String TAG = "UpdatesActivity";
 
@@ -312,6 +314,25 @@ public class UpdatesActivity extends UpdatesListActivity {
         return true;
     }
 
+    @Override
+    public void addedUpdate(Update update) {
+        UpdaterController controller = mUpdaterService.getUpdaterController();
+        Utils.setPersistentStatus(this, UpdateStatus.Persistent.VERIFIED);
+        controller.addUpdate(update);
+        getUpdatesList();
+        Utils.triggerUpdate(this);
+    }
+
+    @Override
+    public void importDisabled() {
+        showSnackbar(R.string.local_update_import_disabled, Snackbar.LENGTH_LONG);
+    }
+
+    @Override
+    public void importFailed() {
+        showSnackbar(R.string.local_update_import_failure, Snackbar.LENGTH_LONG);
+    }
+
     private void hideUpdates() {
         findViewById(R.id.no_new_updates_view).setVisibility(View.VISIBLE);
         findViewById(R.id.recycler_view).setVisibility(View.GONE);
@@ -330,6 +351,14 @@ public class UpdatesActivity extends UpdatesListActivity {
         mExtrasFragment.updatePrefs(Utils.parseJson(jsonFile, false, this));
         Log.d(TAG, "Adding remote updates");
         UpdaterController controller = mUpdaterService.getUpdaterController();
+
+        final Update currUpdate = controller.getCurrentUpdate();
+        if (currUpdate != null && currUpdate.getDownloadId().equals(Update.LOCAL_ID)) {
+            showUpdates();
+            mAdapter.setDownloadId(Update.LOCAL_ID);
+            mAdapter.notifyDataSetChanged();
+            return;
+        }
 
         UpdateInfo newUpdate = Utils.parseJson(jsonFile, true, this);
         boolean updateAvailable = newUpdate != null;
@@ -457,6 +486,9 @@ public class UpdatesActivity extends UpdatesListActivity {
     }
 
     private void handleStatusChange(UpdateStatus status) {
+        if (mUpdaterService.getUpdaterController().getCurrentUpdate().getDownloadId().equals(Update.LOCAL_ID)) {
+            return;
+        }
         if (mToBeExported != null){
             Log.d(TAG, "Ignoring handleStatusChange because there's a pending update to export");
             return;

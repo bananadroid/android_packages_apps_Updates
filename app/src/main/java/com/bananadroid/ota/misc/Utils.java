@@ -117,7 +117,7 @@ public class Utils {
     }
 
     public static boolean canInstall(UpdateBaseInfo update) {
-        return (update.getTimestamp() > SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0));
+        return (update.getTimestamp() > SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) || (update.getName().equals(Update.LOCAL_ID));
     }
 
     public static UpdateInfo parseJson(File file, boolean compatibleOnly, Context context)
