@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Updater</string>
+    <string name="new_update">A new update is out!</string>
+    <string name="uptodate">Your phone is up to date!</string>
+    <string name="checks">Checks for new update</string>
+    <string name="update_btn">Update</string>
+    <string name="device_changelog">Device changelog</string>
+</resources>

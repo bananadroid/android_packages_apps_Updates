@@ -1,0 +1,35 @@
+android_app {
+    name: "BananaUpdater",
+    platform_apis: true,
+    privileged: true,
+    system_ext_specific: true,
+    manifest: "AndroidManifest.xml",
+    certificate: "platform",
+    resource_dirs: ["res"],
+    srcs: [
+        "java/**/*.java",
+        "java/**/*.kt",
+    ],
+    static_libs: [
+	"com.google.android.material_material",
+	"gson-prebuilt-jar",
+	"androidx.core_core",
+	"kotlin-stdlib",
+	"kotlinx-coroutines-android"
+    ],
+    kotlincflags: [
+        "-Xuse-experimental=kotlin.Experimental",
+        "-Xuse-experimental=kotlin.ExperimentalStdlibApi",
+    ],
+    required: [
+        "privapp_whitelist_com.bananadroid.updater.xml"
+    ],
+}
+
+prebuilt_etc_xml {
+    name: "privapp_whitelist_com.bananadroid.updater.xml",
+    src: "privapp_whitelist_com.bananadroid.updater.xml",
+    system_ext_specific: true,
+    filename_from_src: true,
+    sub_dir: "permissions",
+}
