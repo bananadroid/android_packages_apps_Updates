@@ -42,23 +42,23 @@ android_app {
         proguard_flags_files: ["proguard.flags"],
     },
     required: [
-        "privapp_whitelist_org.pixelexperience.ota",
-        "default-permissions_org.pixelexperience.ota"
+        "privapp_whitelist_com.bananadroid.ota",
+        "default-permissions_com.bananadroid.ota"
     ],
 }
 prebuilt_etc {
-    name: "privapp_whitelist_org.pixelexperience.ota",
+    name: "privapp_whitelist_com.bananadroid.ota",
     system_ext_specific: true,
     sub_dir: "permissions",
-    src: "privapp_whitelist_org.pixelexperience.ota.xml",
+    src: "privapp_whitelist_com.bananadroid.ota.xml",
     filename_from_src: true,
 }
 
 prebuilt_etc {
-    name: "default-permissions_org.pixelexperience.ota",
+    name: "default-permissions_com.bananadroid.ota",
     system_ext_specific: true,
     sub_dir: "default-permissions",
-    src: "default-permissions_org.pixelexperience.ota.xml",
+    src: "default-permissions_com.bananadroid.ota.xml",
     filename_from_src: true,
 }
 
