@@ -352,9 +352,7 @@ public class ExtrasFragment extends Fragment {
         card.setCardElevation(getResources().getDimension(R.dimen.extra_card_elevation));
         int padding = (int) getResources().getDimension(R.dimen.extra_card_content_padding);
         card.setContentPadding(padding, padding, padding, padding);
-        int extraMargin = (int) getResources().getDimension(R.dimen.extra_card_layout_margin);
         LinearLayout.LayoutParams buttonLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        buttonLayoutParams.setMargins(extraMargin, extraMargin, extraMargin, extraMargin);
         card.setLayoutParams(buttonLayoutParams);
         return card;
     }
