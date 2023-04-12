@@ -145,8 +145,17 @@ public class Utils {
         return null;
     }
 
+    private static String getBuildType(){
+        return SystemProperties.get(Constants.PROP_BUILD_TYPE, "");
+    }
+
     public static String getServerURL() {
-        return String.format(Constants.OTA_URL, SystemProperties.get(Constants.PROP_DEVICE));
+        String buildType = getBuildType();
+        if (buildType.equals("Vanilla")){
+            return String.format(Constants.OTA_URL_VANILLA, SystemProperties.get(Constants.PROP_DEVICE));
+        } else {
+            return String.format(Constants.OTA_URL_GAPPS, SystemProperties.get(Constants.PROP_DEVICE));
+        }
     }
 
     public static String getMaintainerURL(String username) {
@@ -154,7 +163,12 @@ public class Utils {
     }
 
     public static String getDownloadWebpageUrl(String fileName) {
-        return String.format(Constants.DOWNLOAD_WEBPAGE_URL, SystemProperties.get(Constants.PROP_DEVICE));
+        String buildType = getBuildType();
+        if (buildType.equals("Vanilla")){
+            return String.format(Constants.CHANGELOG_URL_VANILLA, SystemProperties.get(Constants.PROP_DEVICE));
+        } else {
+            return String.format(Constants.CHANGELOG_URL_GAPPS, SystemProperties.get(Constants.PROP_DEVICE));
+        }
     }
 
     public static void triggerUpdate(Context context) {

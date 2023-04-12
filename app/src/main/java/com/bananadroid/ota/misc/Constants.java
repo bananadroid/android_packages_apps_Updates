@@ -21,6 +21,7 @@ public final class Constants {
     public static final String AB_PAYLOAD_PROPERTIES_PATH = "payload_properties.txt";
     public static final String PREF_MOBILE_DATA_WARNING = "pref_mobile_data_warning";
     public static final String UNCRYPT_FILE_EXT = ".uncrypt";
+    public static final String PROP_BUILD_TYPE = "ro.banana.edition";
     public static final String PROP_BUILD_DATE = "ro.build.date.utc";
     public static final String PROP_RECOVERY_UPDATE = "persist.sys.recovery_update";
     public static final String PREF_CURRENT_PERSISTENT_STATUS = "current_persistent_status";
@@ -28,8 +29,10 @@ public final class Constants {
     public static final String DOWNLOAD_PATH = "/data/banana_updates/";
     static final String PROP_AB_DEVICE = "ro.build.ab_update";
     static final String PROP_DEVICE = "ro.banana.device";
-    static final String OTA_URL = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/%s/%s.json";
+    static final String OTA_URL_VANILLA = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/vanilla/%s.json";
+    static final String OTA_URL_GAPPS = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/gapps/%s.json";
     static final String MAINTAINER_URL = "https://github.com/%s";
-    static final String DOWNLOAD_WEBPAGE_URL = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/%s/%s.md";
+    static final String CHANGELOG_URL_VANILLA = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/vanilla/%s.md";
+    static final String CHANGELOG_URL_GAPPS = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/gapps/%s.md";
     static final String EXPORT_PATH = "BananaDroid-Updates/";
 }
