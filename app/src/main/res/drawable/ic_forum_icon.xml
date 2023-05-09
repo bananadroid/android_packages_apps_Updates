@@ -7,5 +7,10 @@
     android:viewportHeight="24">
     <path
         android:fillColor="@color/theme_accent_extra_section"
-        android:pathData="M17,12V3A1,1 0 0,0 16,2H3A1,1 0 0,0 2,3V17L6,13H16A1,1 0 0,0 17,12M21,6H19V15H6V17A1,1 0 0,0 7,18H18L22,22V7A1,1 0 0,0 21,6Z" />
+        android:pathData="M21,6h-2v9L6,15v2c0,0.55 0.45,1 1,1h11l4,4L22,7c0,-0.55 -0.45,-1 -1,-1zM16,13c0.55,0 1,-0.45 1,-1L17,3c0,-0.55 -0.45,-1 -1,-1L3,2c-0.55,0 -1,0.45 -1,1v14l4,-4h10zM4.59,11.59l-0.59,0.58L4,4h11v7L5.17,11l-0.58,0.59z" />
+    <path
+        android:fillColor="@color/theme_accent_extra_section"
+        android:pathData="M15,11V4H4v8.17l0.59,-0.58 0.58,-0.59H6z"
+        android:strokeAlpha="0.3"
+        android:fillAlpha="0.3" />
 </vector>
