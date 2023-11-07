@@ -204,8 +204,7 @@ public class ExtrasFragment extends Fragment {
         final StringBuilder sb = new StringBuilder();
         InputStream iStream = null;
 
-        try {
-            final ZipFile zip = new ZipFile(file);
+        try (final ZipFile zip = new ZipFile(file)) {
             final Enumeration<? extends ZipEntry> iterator = zip.entries();
             while (iterator.hasMoreElements()) {
                 final ZipEntry entry = iterator.nextElement();
@@ -263,6 +262,7 @@ public class ExtrasFragment extends Fragment {
         oStream.flush();
         oStream.close();
         iStream.close();
+        parcelDescriptor.close();
 
         outFile.setReadable(true, false);
 
