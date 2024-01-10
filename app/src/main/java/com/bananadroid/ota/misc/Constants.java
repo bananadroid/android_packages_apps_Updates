@@ -29,10 +29,10 @@ public final class Constants {
     public static final String DOWNLOAD_PATH = "/data/banana_updates/";
     static final String PROP_AB_DEVICE = "ro.build.ab_update";
     static final String PROP_DEVICE = "ro.banana.device";
-    static final String OTA_URL_VANILLA = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/vanilla/%s.json";
-    static final String OTA_URL_GAPPS = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/gapps/%s.json";
+    static final String OTA_URL_VANILLA = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/14/vanilla/%s.json";
+    static final String OTA_URL_GAPPS = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/14/gapps/%s.json";
     static final String MAINTAINER_URL = "https://github.com/%s";
-    static final String CHANGELOG_URL_VANILLA = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/vanilla/%s.md";
-    static final String CHANGELOG_URL_GAPPS = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/13/gapps/%s.md";
+    static final String CHANGELOG_URL_VANILLA = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/14/vanilla/%s.md";
+    static final String CHANGELOG_URL_GAPPS = "https://raw.githubusercontent.com/bananadroid-devices/official_devices/14/gapps/%s.md";
     static final String EXPORT_PATH = "BananaDroid-Updates/";
 }
